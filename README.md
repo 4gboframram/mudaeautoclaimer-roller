@@ -11,9 +11,7 @@ I am 99.99999% nothing will happen to your account if you do use this, but still
 1. Paste the channel id of each of the channels that you want the program to run in, separated by new lines, 
 into channels.txt
 
-2. Paste the names of each of the characters that you want the program to claim, separated by new lines, 
-into channels.txt. The names of each character must be the character's offical name 
-(the name used for the title of the embed the bot sends), and is CASE SENSITIVE.
+2. Paste the names of each of the characters and or series that you want the program to claim, separated by new lines, into characters/series.txt respectively. The names of each character/series must be the character/series's offical name(the name used for the title of the embed the bot sends), and is **CASE SENSITIVE**.
 
 3. Adjust config.json to your liking (read below)
 Also, you need your own user token. I will not give a tutorial here, so just search for how to find it yourself. 
