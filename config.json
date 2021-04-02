@@ -1,0 +1,8 @@
+{
+    "reactionDelay": 0.5,  
+    "TOKEN": "your token", 
+    "timeBetweenRolls": 5,
+    "command": "$w",
+    "numberOfRolls":10,
+    "typingTime": 0.5
+}
