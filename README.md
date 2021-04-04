@@ -33,16 +33,16 @@ If you feel like your account is in danger, you can download the source code and
 
 "numberOfRolls": The amount of rolls the program will try to do per channel
 
-"typingTime": The amount of time the bot types for before sending a message.
-
 
 
 # To add in the future: 
 
-1. Kakera Claiming 
-2. Auto $daily
-3. A Setup gui
-4. Probably stuff
+1. Kakera Claiming
+2. Auto $daily and $dk
+3. Starting and stopping typing to make it seem realistic
+4. A Setup gui
+5. Making rolls on each channel executed asyncronously and making the program sleep the amount of time per channel,
+6. Probably stuff
 
 
 
