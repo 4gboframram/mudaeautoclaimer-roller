@@ -7,7 +7,7 @@ import time
 from colorama import init
 from termcolor import colored
 
-Channels=open('Channels.txt','r').read().splitlines() #channels config
+Channels=open('channels.txt','r').read().splitlines() #channels config
 characters=open('characters.txt','r').read().splitlines() #characters config
 Series=open('series.txt','r').read().splitlines()
 #load all config.json shit and create variables
@@ -154,11 +154,6 @@ async def on_message(message):
             print(colored(f"\n[{current_time}] Ignoring {title}, in channel '{channelName}' because they are not wanted",'yellow'))
     except IndexError: #This IndexError is used to return when there is no Embed
         return
-
-    
-
-    #daily kakera
-        
         
 
     
