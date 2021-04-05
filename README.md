@@ -27,22 +27,23 @@ Also, you need your own user token. I will not give a tutorial here, so just sea
 "TOKEN": Your user token used to make the program actually work. I can assure you that this program is not a token logger, because I am too stupid to make one of those.
 If you feel like your account is in danger, you can download the source code and confirm it is not harmful.
 
-"timeBetweenRolls": The amount of time between consecutive rolls in a channel for the program. The lower it is set, the more likely Mudae won't register your inputs.
+"timeBetweenRolls": The amount of time between consecutive rolls in a channel for the program. The lower it is set, the more likely Mudae won't register your inputs, and the less human you will seem.
 
 "command": The command that will be used for rolling.
 
 "numberOfRolls": The amount of max rolls the program will show. Basically doesn't affect anything except the what it says in the console
+
+"dkCommand": The command that will be used for daily kakera claiming
+
+"dailyCommand": The command that will be used for getting $daily
 
 
 
 # To add in the future: 
 
 1. Kakera Claiming
-2. Auto $daily and $dk
-3. Starting and stopping typing to make it seem realistic
-4. A Setup gui
-5. Making rolls on each channel executed asyncronously and making the program sleep the amount of time per channel,
-6. Probably stuff
+2. A config setup gui
+3. Probably stuff
 
 
 
