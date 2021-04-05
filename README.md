@@ -31,7 +31,7 @@ If you feel like your account is in danger, you can download the source code and
 
 "command": The command that will be used for rolling.
 
-"numberOfRolls": The amount of rolls the program will try to do per channel
+"numberOfRolls": The amount of max rolls the program will show. Basically doesn't affect anything except the what it says in the console
 
 
 
