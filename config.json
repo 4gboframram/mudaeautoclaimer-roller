@@ -4,5 +4,7 @@
     "timeBetweenRolls": 5,
     "command": "$w",
     "numberOfRolls":10,
-    "typingTime": 0.5
+    "typingTime": 0.5,
+    "dkCommand":"$dk",
+    "dailyCommand": "$daily"
 }
