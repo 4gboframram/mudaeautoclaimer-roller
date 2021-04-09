@@ -44,6 +44,3 @@ If you feel like your account is in danger, you can download the source code and
 1. Kakera Claiming
 2. A config setup gui
 3. Probably stuff
-
-
-

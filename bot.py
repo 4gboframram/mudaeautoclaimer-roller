@@ -165,8 +165,8 @@ async def on_message(message):
                 print(colored(f"\n[{current_time}] Trying to claim: {str(title)}",'blue'))
                 
                 await asyncio.sleep(reactionDelay)
-                if not 'React with' in message.embeds[0].description: #if a character's image card is shown, say someone tried to fool the bot
-                            current_time = time.strftime("%D %H:%M:%S", time.localtime())
+                if '/' in message.embeds[0].footer.text: #if a character's image card is shown, say someone tried to fool the bot
+                            current_time = time.strftime("%D %H:%M:%S", time.localtime()) #Only image cards contain a / in the footer
                             print(colored(f'[{current_time}] Someone tried to fool the bot in channel \'{channelName}\' by sending {title}\'s info card','yellow'))
                             return
                     
