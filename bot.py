@@ -165,11 +165,15 @@ async def on_message(message):
                 print(colored(f"\n[{current_time}] Trying to claim: {str(title)}",'blue'))
                 
                 await asyncio.sleep(reactionDelay)
-                if '/' in message.embeds[0].footer.text: #if a character's image card is shown, say someone tried to fool the bot
-                            current_time = time.strftime("%D %H:%M:%S", time.localtime()) #Only image cards contain a / in the footer
+                try:
+                    if '/' in message.embeds[0].footer.text: #if a character's image card is shown, say someone tried to fool the bot
+                            current_time = time.strftime("%D %H:%M:%S", time.localtime()) #Only image cards contain a "/" in the footer.'
+                                                                                          #The reason I don't only search to see if the footer exists 
+                                                                                          #is because the 2 rolls left message is in the footer too by default
                             print(colored(f'[{current_time}] Someone tried to fool the bot in channel \'{channelName}\' by sending {title}\'s info card','yellow'))
                             return
-                    
+                except TypeError: #There won't be a footer on normal sent characters or wishes
+                    pass          #because empty embed fields are not iterable
                 await message.add_reaction(message.reactions[0])
                 current_time = time.strftime("%D %H:%M:%S", time.localtime())
                 print(colored(f'\t[{current_time}] Reacted to {title} in channel \'{channelName}\' with ','blue')+colored(f'\'{message.reactions[0]}\'','cyan'))
