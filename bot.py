@@ -23,18 +23,25 @@ numberOfRolls=config["numberOfRolls"]
 typingTime=config["typingTime"]
 dkCommand=config["dkCommand"]
 dailyCommand=config["dailyCommand"]
-client=discord.Client() 
+claimByClaimRank=config["claimByClaimRank"]
+claimRank=config["claimRank"]
+claimByKakeraValue=config["claimByKakeraValue"]
+kakeraValue=config["kakeraValue"]
+client=discord.Client()
 
-    
+searchOffset=0
+#Regex update
 
 init() #initiate colorama for colors in the console
+
 def search(string):
     
-    temp = re.findall(r'\d+', string)
-    res = list(map(int, temp)) #gives a list of all integers in a string 
+    temp = re.findall(r'\d+', string) #search string for any amount of digits
+    res = list(map(int, temp)) #apply the int function to every int in the string, and create a list of them
     return res                   
-    
+
 async def doRollsInner(channel): #this function is an infinite loop
+
         chanel=client.get_channel(int(channel)) #I love mispelling on purpose
         name=chanel.name 
         await chanel.send(command)
@@ -50,8 +57,8 @@ async def doRollsInner(channel): #this function is an infinite loop
                 if 'the roulette is limited to' in message.content and client.user.name in message.content and message.author.bot==True:
                     current_time = time.strftime("%D %H:%M:%S", time.localtime())
                     norolls=message.content
-                    print(f"[{current_time}] No rolls left in '{name}', Sleeping in '{name}' for {search(norolls)[1]+1} minutes")
-                    await asyncio.sleep((search(norolls)[1]+1)*60)
+                    print(f"[{current_time}] No rolls left in '{name}', Sleeping in '{name}' for {search(norolls)[1+searchOffset]+1} minutes")
+                    await asyncio.sleep((search(norolls)[1+searchOffset]+1)*60)
                     await doRollsInner(channel)  #start again after sleeping. Done asyncronously. 
 
             if norolls==False:
@@ -82,13 +89,13 @@ async def dailyClaim(channel):
                 if len(t)<=1: #basically if there's either only hours or only minutes
                                 #idk if only hours is a thing, but just in case
                     if 'h' in message.content: 
-                        print(colored(f"[{current_time}] Next {dkCommand} in '{chanel.name}' in {t[0]}h 0m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
-                        await asyncio.sleep(3600*t[0])
+                        print(colored(f"[{current_time}] Next {dkCommand} in '{chanel.name}' in {t[0+searchOffset]}h 0m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
+                        await asyncio.sleep(3600*t[0+searchOffset])
                     if 'min' in message.content: 
-                        print(colored(f"[{current_time}] Next {dkCommand} in '{chanel.name}' in 0h {t[0]}m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
-                        await asyncio.sleep(60*t[0])
-                print(colored(f"[{current_time}] Next {dkCommand} in '{chanel.name}' in {t[0]}h {t[1]}m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
-                await asyncio.sleep(3600*t[0]+60*t[1]+1) #first integer in the message is the hour, second integer is the minutes
+                        print(colored(f"[{current_time}] Next {dkCommand} in '{chanel.name}' in 0h {t[0+searchOffset]}m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
+                        await asyncio.sleep(60*t[0+searchOffset])
+                print(colored(f"[{current_time}] Next {dkCommand} in '{chanel.name}' in {t[0+searchOffset]}h {t[1+searchOffset]}m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
+                await asyncio.sleep(3600*t[0+searchOffset]+60*t[1+searchOffset]+1) #first integer in the message is the hour, second integer is the minutes
                 await dailyClaim(channel)
             except IndexError: continue #when search() doesn't return anything, ignore the error raised and try again
 
@@ -118,13 +125,13 @@ async def daily(channel):
                 if len(t)<=1: #basically if there's either only hours or only minutes
                                 #idk if only hours is a thing, but just in case
                     if 'h' in message.content: 
-                        print(colored(f"[{current_time}] Next {dailyCommand} in '{chanel.name}' in {t[0]}h 0m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
-                        await asyncio.sleep(3600*t[0])
+                        print(colored(f"[{current_time}] Next {dailyCommand} in '{chanel.name}' in {t[0+searchOffset]}h 0m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
+                        await asyncio.sleep(3600*t[0+searchOffset])
                     if 'min' in message.content: 
-                        print(colored(f"[{current_time}] Next {dailyCommand} in '{chanel.name}' in 0h {t[0]}m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
-                        await asyncio.sleep(60*t[0])
-                print(colored(f"[{current_time}] Next {dailyCommand} in '{chanel.name}' in {t[0]}h {t[1]}m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
-                await asyncio.sleep(3600*t[0]+60*t[1]+1) #first integer in the message is the hour, second integer is the minutes
+                        print(colored(f"[{current_time}] Next {dailyCommand} in '{chanel.name}' in 0h {t[0+searchOffset]}m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
+                        await asyncio.sleep(60*t[0+searchOffset])
+                print(colored(f"[{current_time}] Next {dailyCommand} in '{chanel.name}' in {t[0+searchOffset]}h {t[1+searchOffset]}m. Asyncronously sleeping in '{chanel.name}' that amount of time.",'cyan'))
+                await asyncio.sleep(3600*t[0+searchOffset]+60*(t[1+searchOffset]+1)) #first integer in the message is the hour, second integer is the minutes
                 await daily(channel)
             except IndexError: continue #when search() doesn't return anything, ignore the error raised and try again
 
@@ -142,6 +149,9 @@ async def doDaily():
 async def on_ready(): 
     current_time = time.strftime("%D %H:%M:%S", time.localtime())
     print(colored(f'[{current_time}] Logged in as {client.user.name}','green'))
+    global searchOffset
+    searchOffset= len(search(client.user.name))  #get the amount of integers in a user's name  
+    print(searchOffset)
     await asyncio.gather(doRolls(), doDailyClaim(),doDaily()) #when user logs on, call doRolls(), doDailyClaim() and doDaily()
 
 @client.event
@@ -154,9 +164,9 @@ async def on_message(message):
         title=message.embeds[0].author.name
         description=message.embeds[0].description
         channelName=message.channel.name
-
-
-        if title in characters or any(series in description for series in Series): 
+        messageClaimRank=list(map(int,re.findall(r"Claims: #(\d+)",description)))[0]
+        messageKakera=list(map(int,re.findall(r"\*\*(\d+)\*\*<:kakera:469835869059153940>",description)))[0]
+        if title in characters or any(series in description for series in Series) or (messageClaimRank<=claimRank and claimByClaimRank==True) or (messageKakera>=kakeraValue and claimByKakeraValue==True): 
             #mudae uses the author field for character names in its embeds.
 
             try:
@@ -166,6 +176,7 @@ async def on_message(message):
                 
                 await asyncio.sleep(reactionDelay)
                 try:
+                
                     if '/' in message.embeds[0].footer.text: #if a character's image card is shown, say someone tried to fool the bot
                             current_time = time.strftime("%D %H:%M:%S", time.localtime()) #Only image cards contain a "/" in the footer.'
                                                                                           #The reason I don't only search to see if the footer exists 

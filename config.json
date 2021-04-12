@@ -6,5 +6,9 @@
     "numberOfRolls":10,
     "typingTime": 0.5,
     "dkCommand":"$dk",
-    "dailyCommand": "$daily"
+    "dailyCommand": "$daily",
+    "claimByClaimRank": false,
+    "claimRank": 100,
+    "claimByKakeraValue": false,
+    "kakeraValue": 500
 }
