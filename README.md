@@ -37,10 +37,20 @@ If you feel like your account is in danger, you can download the source code and
 
 "dailyCommand": The command that will be used for getting $daily
 
+"claimByClaimRank": Allows the ability to claim by a character's claim rank. Must be true or false. (Can only be used on servers that have $toggleclaimrolls enabled). If the server has it disabled, then the bot will automatically not use this feature.
+
+"claimRank": The minimum claim rank for the bot to claim solely by claim rank. This does not override claiming by character or claiming by series.
+
+"claimByKakera": Allows the ability to claim by a character's kakera value. Must be true or false. (Can only be used on servers that have $togglekakerarolls enabled). If the server has it disabled, then the bot will automatically not use this feature.
+
+"kakeraValue": The kakera threshold for claiming a character by kakera value. In other words, the minimum amount of kakera a character must be worth for the program to claim solely by kakera value. This does not override claiming by character or claiming by series.
 
 
 # To add in the future: 
 
-1. Kakera Claiming
+1. Kakera Claiming (I really need to get going on this lmao)
 2. A config setup gui
 3. Probably stuff
+
+#worst fails so far because I didn't implement checking claim cooldown :( 
+![image](https://user-images.githubusercontent.com/79847791/114407634-9862f380-9b76-11eb-90d3-621d4123b34f.png) 
