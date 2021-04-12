@@ -4,7 +4,7 @@ A python program that can allow the user to automatically claim and roll waifus/
 
 # WARNING: 
 AUTOMATING USERS IS AGAINST DISCORD'S TOS. IT IS ALSO FORBIDDEN BY MANY SERVERS, SO USE AT YOUR OWN RISK. 
-I am 99.99999% nothing will happen to your account if you do use this, but still things can happen. I am not responsible for any accounts getting banned. This code was created for purely educational purposes.
+I am 99.99999% sure nothing will happen to your account if you do use this, but still things can happen. I am not responsible for any accounts getting banned. This code was created for purely educational purposes.
 
 
 # TO USE
