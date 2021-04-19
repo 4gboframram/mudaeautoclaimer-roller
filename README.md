@@ -54,3 +54,4 @@ If you feel like your account is in danger, you can download the source code and
 
 # worst fails so far because I didn't implement checking claim cooldown :( 
 ![image](https://user-images.githubusercontent.com/79847791/114407634-9862f380-9b76-11eb-90d3-621d4123b34f.png) 
+nevermind actually got her 3 days later
